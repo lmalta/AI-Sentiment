@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-module
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-module
+  template:
+    metadata:
+      labels:
+        app: ai-module
+    spec:
+      containers:
+      - name: ai-module
+        image: docker.io/library/ai-module:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ai-module
+spec:
+  selector:
+    app: ai-module
+  ports:
+    - port: 9000
+      targetPort: 9000
+  type: ClusterIP
