@@ -1,0 +1,12 @@
+# Ignore Docker image tarballs
+*.tar
+
+# Optionnel : ignorer les dossiers build temporaires
+k8s/nginx/*.tar
+k8s/fastapi/*.tar
+k8s/ai-module/*.tar
+
+# Ignore les fichiers temporaires de l'éditeur
+*.swp
+*.bak
+*.tmp
